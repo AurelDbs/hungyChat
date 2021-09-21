@@ -14,11 +14,34 @@ function App(props) {
 
   const db = firebase.database()
 
+  
+
   useEffect(() => {
-    const recipesRef = db.ref(`/${pseudo}/recipes`);
+    // db.ref('recipes').on('value', (snapshot) => {
+    //   console.log(snapshot)
+    //   const obj = snapshot.val();
+    //   console.log(obj)
+    // });
+
+
+    console.log('coucou')
+    const recipesRef = db.ref('recipes');
     const newRecipeRef = recipesRef.push();
     newRecipeRef.set({recipes})
  }, [recipes, db, pseudo])
+
+ useEffect(() => {
+  const recipesRef = db.ref(`/${pseudo}/recipes`);
+  recipesRef.get().then((snapshot) => {
+    if (snapshot.exists()) {
+      console.log(snapshot.val());
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+ })
 
   function addRecipe(recipe){
     const recipesData = {...recipes}
