@@ -10,14 +10,14 @@ import 'firebase/compat/database'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBlIZQTbj4XG3BZ9qxfzeYDxXCKH5sTCAY",
-  authDomain: "chatbox-app-911fe.firebaseapp.com",
-  databaseURL: "https://chatbox-app-911fe-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "chatbox-app-911fe",
-  storageBucket: "chatbox-app-911fe.appspot.com",
-  messagingSenderId: "886857666083",
-  appId: "1:886857666083:web:d221ef1b5df077e983ab96",
-  measurementId: "G-J4NCGQJYL5"
+  apiKey: "AIzaSyBb5eEVQeoPnIJ7brhd-Fa_XKlQKg93Rnw",
+  authDomain: "hungrychat-app.firebaseapp.com",
+  databaseURL: "https://hungrychat-app-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "hungrychat-app",
+  storageBucket: "hungrychat-app.appspot.com",
+  messagingSenderId: "833585414800",
+  appId: "1:833585414800:web:0b11cc1956d325a0bf8e15",
+  measurementId: "G-MR3CWEB77C"
 };
 
 // Initialize Firebase

@@ -15,10 +15,10 @@ function App(props) {
   const db = firebase.database()
 
   useEffect(() => {
-    const recipesRef = db.ref("recipes");
+    const recipesRef = db.ref(`/${pseudo}/recipes`);
     const newRecipeRef = recipesRef.push();
     newRecipeRef.set({recipes})
- }, [recipes, db])
+ }, [recipes, db, pseudo])
 
   function addRecipe(recipe){
     const recipesData = {...recipes}
