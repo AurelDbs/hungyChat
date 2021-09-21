@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './App.css';
 import React, { useState, useEffect } from 'react'
 import Header from './Components/Header'
@@ -14,28 +15,26 @@ function App(props) {
 
   const db = firebase.database()
 
-  
-
   useEffect(() => {
     const recipesRef = db.ref(`/${pseudo}/recipes`);
     const newRecipeRef = recipesRef.push();
-    console.log(recipes)
     newRecipeRef.set({recipes})
   }, [recipes, db, pseudo])
 
- useEffect(() => {
-  const recipesRef = db.ref(`/${pseudo}/recipes`);
-  recipesRef.get().then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-      Object.keys(snapshot.val()).map(rec => console.log('snap:', snapshot.val()[rec].recipes))
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
- }) 
+  useEffect(() => {
+    const recipesRef = db.ref(`/${pseudo}/recipes`);
+    recipesRef.get().then((snapshot) => {
+      if (snapshot.exists()) {
+        var keys = Object.keys(snapshot.val());
+        var last = keys[keys.length-1];
+        setrecipes(snapshot.val()[last].recipes)
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  }, []) 
 
   function addRecipe(recipe){
     const recipesData = {...recipes}
@@ -55,9 +54,10 @@ function App(props) {
     setrecipes(recipesData)
   }
 
-  function chargeExemple() {
-    setrecipes(recettes)
-  }
+  // function chargeExemple() {
+  //   setrecipes(recettes)
+  //   //chargeExemple={chargeExemple} => a remettre dan sla balise Admin pour charger mauellement
+  // }
 
   let cards = []
   if(recipes !== undefined) {
@@ -80,7 +80,7 @@ function App(props) {
         addRecipe={addRecipe} 
         updateRecipe={updateRecipe}
         removeRecipe={removeRecipe}
-        chargeExemple={chargeExemple} />
+        />
     </div>
   );
 }
