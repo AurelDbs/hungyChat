@@ -17,35 +17,29 @@ function App(props) {
   
 
   useEffect(() => {
-    // db.ref('recipes').on('value', (snapshot) => {
-    //   console.log(snapshot)
-    //   const obj = snapshot.val();
-    //   console.log(obj)
-    // });
-
-
-    console.log('coucou')
-    const recipesRef = db.ref('recipes');
+    const recipesRef = db.ref(`/${pseudo}/recipes`);
     const newRecipeRef = recipesRef.push();
+    console.log(recipes)
     newRecipeRef.set({recipes})
- }, [recipes, db, pseudo])
+  }, [recipes, db, pseudo])
 
  useEffect(() => {
   const recipesRef = db.ref(`/${pseudo}/recipes`);
   recipesRef.get().then((snapshot) => {
     if (snapshot.exists()) {
       console.log(snapshot.val());
+      Object.keys(snapshot.val()).map(rec => console.log('snap:', snapshot.val()[rec].recipes))
     } else {
       console.log("No data available");
     }
   }).catch((error) => {
     console.error(error);
   });
- })
+ }) 
 
   function addRecipe(recipe){
     const recipesData = {...recipes}
-    recipesData[`recette-${Date.now()}`] = recipe;
+    recipesData[`recipe-${Date.now()}`] = recipe;
     setrecipes(recipesData)
   }
 
