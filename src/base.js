@@ -23,16 +23,12 @@ const firebaseConfig = {
 // Initialize Firebase
 
 function initFirebase() {
-  console.log(firebase)
   if(!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig)
   }
 }
 
 initFirebase();
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app)
-// console.log(db)
 
-// export default firebaseConfig
-export default firebase
+export default firebaseConfig
+export {firebase}

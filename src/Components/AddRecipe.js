@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 function AddRecipe({addRecipe}) {
   const [recipe, setRecipe] = useState({
-    name: '',
+    nom: '',
     image: '',
     ingredients: '',
     instructions: ''
@@ -10,14 +10,12 @@ function AddRecipe({addRecipe}) {
 
   function handleChange(event) {
     const {name, value} = event.target
-    setRecipe(...recipe, {[name]: value})
+    setRecipe({...recipe, [name]: value })
   }
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log("QUAND JE SUBMIT, recipe =", recipe)
     addRecipe(recipe)
-
     // Object.keys(recipe).forEach(item => {
     //   recipe[item] = ''
     // })
@@ -28,8 +26,8 @@ function AddRecipe({addRecipe}) {
     <div className='card'>
       <form className="admin-form ajouter-recette" onSubmit={handleSubmit}>
         <input onChange={handleChange}
-          value={recipe.name} 
-          name="name" 
+          value={recipe.nom} 
+          name="nom" 
           type="text" 
           placeholder="Nom de la recette"/>
         <input onChange={handleChange}
@@ -38,7 +36,7 @@ function AddRecipe({addRecipe}) {
           type="text" 
           placeholder="Nom de l'image"/>
         <textarea onChange={handleChange}
-          value={recipe.ingredienst} 
+          value={recipe.ingredients} 
           name="ingredients" 
           rows="3"  
           placeholder="Liste des ingredients" />

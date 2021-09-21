@@ -5,27 +5,39 @@ import Admin from './Components/Admin'
 import Card from './Components/Card'
 
 import recettes from './recettes'
-// import firebase from './base'
+import {firebase} from './base'
 
 function App(props) {
 
   const [pseudo, setpseudo] = useState(props.match.params.pseudo)
   const [recipes, setrecipes] = useState({})
 
-  // const db = firebase.database()
+  const db = firebase.database()
 
-  // useEffect(() => {
-    // const recipesRef = db.ref("recipes");
-    // const newRecipeRef = recipesRef.push();
-    // newRecipeRef.set({recipes})
- // }, [recipes, db])
+  useEffect(() => {
+    const recipesRef = db.ref("recipes");
+    const newRecipeRef = recipesRef.push();
+    newRecipeRef.set({recipes})
+ }, [recipes, db])
 
   function addRecipe(recipe){
     const recipesData = {...recipes}
-    console.log('la recette:', recipe)
     recipesData[`recette-${Date.now()}`] = recipe;
     setrecipes(recipesData)
-}
+  }
+
+  function updateRecipe(key, newRecipe){
+    const recipesData = {...recipes}
+    recipesData[key] = newRecipe
+    setrecipes(recipesData)
+  }
+
+  function removeRecipe(key){
+    const recipesData = {...recipes}
+    delete recipesData[key]
+    setrecipes(recipesData)
+  }
+
   function chargeExemple() {
     setrecipes(recettes)
   }
@@ -47,7 +59,10 @@ function App(props) {
         </div>
       </div>
       <Admin 
+        recipes={recipes}
         addRecipe={addRecipe} 
+        updateRecipe={updateRecipe}
+        removeRecipe={removeRecipe}
         chargeExemple={chargeExemple} />
     </div>
   );

@@ -1,7 +1,6 @@
 import React from 'react'
 
 function Card({details}) {
-  console.log('ligne4:', details)
 
   const ingredients = details.ingredients
     .split(',')
