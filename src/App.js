@@ -69,18 +69,18 @@ function App(props) {
   return (
     <div className="App">
       <Header pseudo={pseudo}/>
-      <div className='chatbox'></div>
-      <div className='recipebox'>
-        <div className="cards">
-          {cards}
-        </div>
-      </div>
       <Admin 
         recipes={recipes}
         addRecipe={addRecipe} 
         updateRecipe={updateRecipe}
         removeRecipe={removeRecipe}
         />
+      <div className='chatbox'></div>
+      <div className='recipebox'>
+        <div className="cards">
+          {cards}
+        </div>
+      </div>
     </div>
   );
 }

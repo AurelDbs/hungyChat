@@ -18,9 +18,7 @@ function AdminForm({id: key, updateRecipe, recipes, removeRecipe}) {
         <input value={recette.image} onChange={e => handleChange(e, key)} type="text" name="image" placeholder="Adresse de l'image"/>
         <textarea value={recette.ingredients} onChange={e => handleChange(e, key)}name="ingredients" rows='3' placeholder='Liste des ingrédients'/>
         <textarea value={recette.instructions} onChange={e => handleChange(e, key)} name="instructions" rows='15' placeholder='Liste des instructions'/>
-
       </form>
-
       <button onClick={()=> removeRecipe(key)}>Remove recipe</button>
     </div>
   )
