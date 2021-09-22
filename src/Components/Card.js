@@ -23,7 +23,7 @@ function Card({details}) {
   }
 
   function openAdminFormEdit() {
-    console.log("lolilol")
+    console.log("edit/remove")
   }
    
   return(
@@ -34,13 +34,13 @@ function Card({details}) {
       <div className='recette'>
         <div className="card-header">
           <h3>{details.nom}</h3>
-          <div>
+          {/* <div>
             <IconContext.Provider value={{ color: "darklategrey", className: "card-header-icon" }}>
               <div>
                 <MdEdit onClick={openAdminFormEdit}/><MdClear onClick={openAdminFormEdit}/>
               </div>
             </IconContext.Provider>
-          </div>
+          </div> */}
         </div>
         <ul className="list-ingredients">
           {ingredients}
