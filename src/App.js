@@ -12,7 +12,6 @@ function App(props) {
 
   const [pseudo, setpseudo] = useState(props.match.params.pseudo)
   const [recipes, setrecipes] = useState({})
-
   const db = firebase.database()
 
   useEffect(() => {
@@ -54,11 +53,6 @@ function App(props) {
     setrecipes(recipesData)
   }
 
-  // function chargeExemple() {
-  //   setrecipes(recettes)
-  //   //chargeExemple={chargeExemple} => a remettre dan sla balise Admin pour charger mauellement
-  // }
-
   let cards = []
   if(recipes !== undefined) {
     cards = Object.keys(recipes).map(key => (
@@ -69,18 +63,18 @@ function App(props) {
   return (
     <div className="App">
       <Header pseudo={pseudo}/>
-      <Admin 
-        recipes={recipes}
-        addRecipe={addRecipe} 
-        updateRecipe={updateRecipe}
-        removeRecipe={removeRecipe}
-        />
       <div className='chatbox'></div>
       <div className='recipebox'>
         <div className="cards">
           {cards}
         </div>
       </div>
+      <Admin 
+        recipes={recipes}
+        addRecipe={addRecipe} 
+        updateRecipe={updateRecipe}
+        removeRecipe={removeRecipe}
+        />
     </div>
   );
 }

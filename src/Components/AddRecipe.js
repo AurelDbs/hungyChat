@@ -16,10 +16,6 @@ function AddRecipe({addRecipe}) {
   function handleSubmit(event) {
     event.preventDefault()
     addRecipe(recipe)
-    // Object.keys(recipe).forEach(item => {
-    //   recipe[item] = ''
-    // })
-    // setRecipe(recipe)
   } 
 
   return(

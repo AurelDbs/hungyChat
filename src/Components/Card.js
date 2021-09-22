@@ -2,8 +2,6 @@ import React from 'react'
 import { MdEdit, MdClear } from 'react-icons/md';
 import { IconContext } from "react-icons";
 
-
-
 function Card({details}) {
 
   const ingredients = details.ingredients
@@ -21,10 +19,6 @@ function Card({details}) {
       return require(`../img/default.jpeg`).default
     }
   }
-
-  function openAdminFormEdit() {
-    console.log("edit/remove")
-  }
    
   return(
     <div className='card'>
@@ -34,13 +28,6 @@ function Card({details}) {
       <div className='recette'>
         <div className="card-header">
           <h3>{details.nom}</h3>
-          {/* <div>
-            <IconContext.Provider value={{ color: "darklategrey", className: "card-header-icon" }}>
-              <div>
-                <MdEdit onClick={openAdminFormEdit}/><MdClear onClick={openAdminFormEdit}/>
-              </div>
-            </IconContext.Provider>
-          </div> */}
         </div>
         <ul className="list-ingredients">
           {ingredients}
@@ -51,7 +38,6 @@ function Card({details}) {
       </div>
     </div>
   )
-
 }
 
 export default Card

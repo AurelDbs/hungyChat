@@ -17,11 +17,7 @@ function Admin(props) {
               id={key}
             />)
         }
-
       </div>
-      <button onClick={props.chargeExemple}>
-        Fill in
-      </button>
     </footer>
   )
 }
